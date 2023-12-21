@@ -5,12 +5,17 @@ function adicionar() {
 //recuperar nome e quantidade dos produtos
 let produto = document.getElementById('produto').value;
 let quantidade = parseInt(document.getElementById('quantidade').value);
+let nomeProduto = produto.split('-')[0];
+let valorUnidade = produto.split('- R$')[1];
+//verificar se a quantidade e o produto são válidos
 if (isNaN(quantidade) || quantidade <= 0) {
     alert('Por favor, insira uma quantidade válida para o produto selecionado.');
       return;
    }
-let nomeProduto = produto.split('-')[0];
-let valorUnidade = produto.split('- R$')[1];
+if (!produto || produto.trim() === "") {
+    alert("Selecione um produto válido.");
+    return;
+   }
 //calcular o preço por produto
 let preco = quantidade * valorUnidade;
 //adicionar tudo no carrinho
